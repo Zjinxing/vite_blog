@@ -1,0 +1,19 @@
+{
+  "name": "vitepress-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs"
+  },
+  "devDependencies": {
+    "vitepress": "^0.14.1"
+  },
+  "dependencies": {
+    "globby": "^11.0.3",
+    "gray-matter": "^4.0.3",
+    "mz": "^2.7.0"
+  }
+}
