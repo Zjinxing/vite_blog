@@ -3,7 +3,8 @@ const globby = require('globby')
 const matter = require('gray-matter')
 
 function rTime(date) {
-  const json_date = JSON.stringify(new Date(date)).slice(1)
+  // new Date(undefined).toJSON() returns null
+  const json_date = new Date(date || null).toJSON()
   return json_date.split('T')[0]
 }
 
@@ -12,7 +13,7 @@ var compareDate = function (obj1, obj2) {
 }
 
 module.exports = async () => {
-  const paths = await globby(['**.md'], {
+  const paths = await globby(['**.md', '!**/index.md'], {
     ignore: ['node_modules'],
   })
   let pages = await Promise.all(

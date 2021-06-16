@@ -1,6 +1,6 @@
 <template>
   <ul class="article-list">
-    <li v-for="art in artList" :key="art.frontMatter.title"  class="article">
+    <li v-for="art in artList" :key="art.frontMatter.title" class="article">
       <a :href="art.regularPath">
         <div class="article-header">
           <h3 class="article-title">
@@ -26,26 +26,34 @@ const artList = computed(() =>
 )
 </script>
 
-<style scoped>
-.article-list {
+<style lang="stylus" scoped>
+.article-list
   list-style: none;
   width: 650px;
   margin: 0 auto;
-}
-.article {
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #ccc;
-}
-.article-list a {
-  text-decoration: none;
-}
-.article-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-.article-title {
+
+.article
+  padding: 25px 10px 15px 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--c-divider-light);
+  transition: all 0.2s
+  &-describe
+    color: var(--c-text-light)
+  &-header
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px
+  &-date
+    color: var(--c-text-lighter)
+  &:hover
+    transform: scale(1.03)
+    box-shadow: 5px 5px 10px #3eaf7c66;
+
+.article-list
+  a
+    text-decoration: none;
+
+.article-title
   margin: 0;
-}
 </style>
