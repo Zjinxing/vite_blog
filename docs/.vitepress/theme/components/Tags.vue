@@ -14,7 +14,7 @@
     <ul class="tags-art">
       <li v-for="art in selectedPages" :key="art.frontMatter.title">
         <a :href="art.regularPath" class="tags-art-link">
-          <span>{{ art.frontMatter.title }}</span>
+          <span class="art-title">{{ art.frontMatter.title }}</span>
           <span class="art-date">{{ art.frontMatter.date }}</span>
         </a>
       </li>
@@ -53,13 +53,13 @@ const selectTag = (tag) => {
 .tags
   &-title
     margin: 20px auto
-    height 30px
+    height: 30px
   &-wrapper
     display: flex
     .tag-item
       position: relative
       padding: 5px 3px
-      margin 0 10px 10px 0
+      margin: 0 10px 10px 0
       color: var(--c-text)
       border-radius: 30px 5px 5px 30px
       cursor: pointer
@@ -72,7 +72,7 @@ const selectTag = (tag) => {
         height: 2px
         background: var(--c-brand)
         transform: translateX(-50%)
-        transition: all .3s
+        transition: all 0.3s
       &:hover
         color: var(--c-brand)
         &::after
@@ -82,7 +82,10 @@ const selectTag = (tag) => {
       display: flex
       justify-content: space-between
       width: 100%
+      text-decoration: none
+      &:hover
+        .art-title
+          text-decoration: underline
       .art-date
         color: var(--c-text-lighter)
-        text-decoration: none
 </style>
