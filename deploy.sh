@@ -16,6 +16,8 @@ git init
 git add -A
 git commit -m 'deploy'
 
+cp ../CNAME CNAME
+
 # if you are deploying to https://<USERNAME>.github.io
 git push -f https://${GITHUB_TOKEN}@github.com/Zjinxing/Zjinxing.github.io master
 
