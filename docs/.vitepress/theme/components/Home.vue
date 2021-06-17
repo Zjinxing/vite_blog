@@ -25,7 +25,8 @@ const artList = usePages()
 <style lang="stylus" scoped>
 .article-list
   list-style: none;
-  width: 650px;
+  width: 100%;
+  max-width: 650px;
   margin: 0 auto;
 
 .article
