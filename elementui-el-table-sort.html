@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>elementUI el-table表格列排序的两种方法 | hello vitepress</title>
+    <meta name="description" content="这里是描述">
+    <link rel="stylesheet" href="/assets/style.4b4f5b57.css">
+    <link rel="modulepreload" href="/assets/Home.bc4fedcc.js">
+    <link rel="modulepreload" href="/assets/app.d8cb571a.js">
+    <link rel="modulepreload" href="/assets/elementui-el-table-sort.md.353f8f01.lean.js">
+    <link rel="modulepreload" href="/assets/app.d8cb571a.js">
+    <meta name="twitter:title" content="elementUI el-table表格列排序的两种方法 | hello vitepress">
+    <meta property="og:title" content="elementUI el-table表格列排序的两种方法 | hello vitepress">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="nav-bar" data-v-5df6160f><div class="sidebar-button" data-v-5df6160f><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div><a class="nav-bar-title" href="/" aria-label="hello vitepress, back to home" data-v-5df6160f data-v-8dbfef3c><!----> hello vitepress</a><div class="flex-grow" data-v-5df6160f></div><div class="nav" data-v-5df6160f><nav class="nav-links" data-v-5df6160f data-v-38e3b123><!--[--><div class="item" data-v-38e3b123><div class="nav-link" data-v-38e3b123 data-v-45eb32c6><a class="item" href="/" data-v-45eb32c6>首页 <!----></a></div></div><div class="item" data-v-38e3b123><div class="nav-link" data-v-38e3b123 data-v-45eb32c6><a class="item" href="/archives/" data-v-45eb32c6>归档 <!----></a></div></div><div class="item" data-v-38e3b123><div class="nav-link" data-v-38e3b123 data-v-45eb32c6><a class="item" href="/tags/" data-v-45eb32c6>分类 <!----></a></div></div><!--]--><!----><!----></nav></div><!--[--><!--]--></header><aside class="sidebar" data-v-58e261f2><nav class="nav-links nav" data-v-58e261f2 data-v-38e3b123><!--[--><div class="item" data-v-38e3b123><div class="nav-link" data-v-38e3b123 data-v-45eb32c6><a class="item" href="/" data-v-45eb32c6>首页 <!----></a></div></div><div class="item" data-v-38e3b123><div class="nav-link" data-v-38e3b123 data-v-45eb32c6><a class="item" href="/archives/" data-v-45eb32c6>归档 <!----></a></div></div><div class="item" data-v-38e3b123><div class="nav-link" data-v-38e3b123 data-v-45eb32c6><a class="item" href="/tags/" data-v-45eb32c6>分类 <!----></a></div></div><!--]--><!----><!----></nav><!--[--><!--]--><!----><!--[--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main class="page" data-v-d36a7fda><div class="container" data-v-d36a7fda><!--[--><!--]--><div class="content" data-v-d36a7fda><div data-v-d36a7fda><p>第一种sort-method：这个属性接收一个方法作为排序依据，和Array.sort()表现一致。 先看一下纯数字组成的数组的排序：</p><div class="language-javascript"><pre><code><span class="token comment">// 如果升序排序则</span>
+Array<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> a <span class="token operator">-</span> b
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// 如果降序排序则</span>
+Array<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> b <span class="token operator">-</span> a
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>如果是对象组成的数组，需要按照对象的某个key的值进行排序，则可以按照下面的方式来进行</p><div class="language-js"><pre><code>Array<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">obj1<span class="token punctuation">,</span> obj2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> val1 <span class="token operator">=</span> obj1<span class="token punctuation">.</span>key
+  <span class="token keyword">let</span> val2 <span class="token operator">=</span> obj2<span class="token punctuation">.</span>key
+  <span class="token keyword">return</span> val1 <span class="token operator">-</span> val2
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>下面是在实例中的应用 HTML部分</p><div class="language-html"><pre><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-table</span> <span class="token attr-name">:data</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>tableData<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-table-column</span> 
+    <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>selection<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-table-column</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-table-column</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>项目编号<span class="token punctuation">&quot;</span></span> <span class="token attr-name">prop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>id<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-table-column</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-table-column</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>项目名称<span class="token punctuation">&quot;</span></span> <span class="token attr-name">prop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>name<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-table-column</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-table-column</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>到期时间<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:sortable</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>true<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:sort-method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>sortByDate<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-table-column</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-table-column</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>赏金<span class="token punctuation">&quot;</span></span> <span class="token attr-name">prop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>price<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-table-column</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-table-column</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>操作<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-table-column</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-table</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>JS部分</p><div class="language-js"><pre><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      tableData<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          type<span class="token operator">:</span> <span class="token string">&#39;平面设计&#39;</span><span class="token punctuation">,</span>
+          id<span class="token operator">:</span> <span class="token string">&#39;477760&#39;</span><span class="token punctuation">,</span>
+          name<span class="token operator">:</span> <span class="token string">&#39;logo设计&#39;</span><span class="token punctuation">,</span>
+          price<span class="token operator">:</span> <span class="token number">10000</span><span class="token punctuation">,</span>
+          deadline<span class="token operator">:</span> <span class="token number">1540260459981</span><span class="token punctuation">,</span>    
+          url<span class="token operator">:</span> <span class="token string">&#39;javascript:;&#39;</span><span class="token punctuation">,</span>      
+        <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
+          type<span class="token operator">:</span> <span class="token string">&#39;整站建设&#39;</span><span class="token punctuation">,</span>
+          id<span class="token operator">:</span> <span class="token string">&#39;451534&#39;</span><span class="token punctuation">,</span>
+          name<span class="token operator">:</span> <span class="token string">&#39;信息网站开发&#39;</span><span class="token punctuation">,</span>
+          price<span class="token operator">:</span> <span class="token number">10000</span><span class="token punctuation">,</span>
+          deadline<span class="token operator">:</span> <span class="token number">1544260459981</span><span class="token punctuation">,</span>  
+          url<span class="token operator">:</span> <span class="token string">&#39;javascript:;&#39;</span><span class="token punctuation">,</span>      
+        <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
+          type<span class="token operator">:</span> <span class="token string">&#39;IOS&#39;</span><span class="token punctuation">,</span>
+          id<span class="token operator">:</span> <span class="token string">&#39;789412&#39;</span><span class="token punctuation">,</span>
+          name<span class="token operator">:</span> <span class="token string">&#39;信息网站开发&#39;</span><span class="token punctuation">,</span>
+          price<span class="token operator">:</span> <span class="token number">10000</span><span class="token punctuation">,</span>
+          deadline<span class="token operator">:</span> <span class="token number">1543260459981</span><span class="token punctuation">,</span>  
+          url<span class="token operator">:</span> <span class="token string">&#39;javascript:;&#39;</span><span class="token punctuation">,</span>      
+        <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
+          type<span class="token operator">:</span> <span class="token string">&#39;UI设计&#39;</span><span class="token punctuation">,</span>
+          id<span class="token operator">:</span> <span class="token string">&#39;564325&#39;</span><span class="token punctuation">,</span>
+          name<span class="token operator">:</span> <span class="token string">&#39;信息网站开发&#39;</span><span class="token punctuation">,</span>
+          price<span class="token operator">:</span> <span class="token number">10000</span><span class="token punctuation">,</span>
+          deadline<span class="token operator">:</span> <span class="token number">1541260459981</span><span class="token punctuation">,</span>  
+          url<span class="token operator">:</span> <span class="token string">&#39;javascript:;&#39;</span><span class="token punctuation">,</span>      
+        <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
+          type<span class="token operator">:</span> <span class="token string">&#39;VI设计&#39;</span><span class="token punctuation">,</span>
+          id<span class="token operator">:</span> <span class="token string">&#39;458252&#39;</span><span class="token punctuation">,</span>
+          name<span class="token operator">:</span> <span class="token string">&#39;VI优化设计&#39;</span><span class="token punctuation">,</span>
+          price<span class="token operator">:</span> <span class="token number">10000</span><span class="token punctuation">,</span>
+          deadline<span class="token operator">:</span> <span class="token number">1545260459981</span><span class="token punctuation">,</span>  
+          url<span class="token operator">:</span> <span class="token string">&#39;javascript:;&#39;</span><span class="token punctuation">,</span>      
+        <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
+          type<span class="token operator">:</span> <span class="token string">&#39;Android&#39;</span><span class="token punctuation">,</span>
+          id<span class="token operator">:</span> <span class="token string">&#39;456782&#39;</span><span class="token punctuation">,</span>
+          name<span class="token operator">:</span> <span class="token string">&#39;Android开发&#39;</span><span class="token punctuation">,</span>
+          price<span class="token operator">:</span> <span class="token number">10000</span><span class="token punctuation">,</span>
+          deadline<span class="token operator">:</span> <span class="token number">1544860459981</span><span class="token punctuation">,</span>
+          url<span class="token operator">:</span> <span class="token string">&#39;javascript:;&#39;</span><span class="token punctuation">,</span>      
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  filters<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">deadline</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>value <span class="token operator">-</span> now <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&#39;已结束&#39;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+        <span class="token keyword">let</span> <span class="token constant">Y</span> <span class="token operator">=</span> date<span class="token punctuation">.</span><span class="token function">getFullYear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">let</span> <span class="token constant">M</span> <span class="token operator">=</span> date<span class="token punctuation">.</span><span class="token function">getMonth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token keyword">let</span> <span class="token constant">D</span> <span class="token operator">=</span> date<span class="token punctuation">.</span><span class="token function">getDate</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">Y</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">M</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">D</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">sortByDate</span><span class="token punctuation">(</span><span class="token parameter">obj1<span class="token punctuation">,</span> obj2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> val1 <span class="token operator">=</span> obj1<span class="token punctuation">.</span>deadline
+      <span class="token keyword">let</span> val2 <span class="token operator">=</span> obj2<span class="token punctuation">.</span>deadline
+      <span class="token keyword">return</span> val1 <span class="token operator">-</span> val2
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>第二种方法为sort-by这个属性是指定数据按照哪个属性进行排序，比如上面的例子中如果要按照时间戳来排序可以直接把:sort-method=&quot;sortByDate&quot;换成sort-by=&quot;deadline&quot;就能达到同样的效果了，如果使用了sort-by就不能使用sort-method了，否则不会生效。   值得注意的一点是sort-method是属性不是方法，要写成&quot;:sort-method=&#39;sortfunc&#39;&quot;而不能写成&quot;@sort-method=&#39;sortfunc&#39;&quot;，另外两个排序方法都需要将sortable设为true才能生效</p></div></div><footer class="page-footer" data-v-d36a7fda data-v-5a019cc9><div class="edit" data-v-5a019cc9><div class="edit-link" data-v-5a019cc9 data-v-3ae295f1><!----></div></div><div class="updated" data-v-5a019cc9><!----></div></footer><!----><!--[--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"intersectionobserver-infinitscroll.md\":\"370867fc\",\"bubblesort.md\":\"377b1713\",\"chat-input.md\":\"a38e0ea1\",\"electron-rxdb.md\":\"c2491a00\",\"elementui-el-table-sort.md\":\"353f8f01\",\"index.md\":\"80674214\",\"javascript-extends.md\":\"dadf04c0\",\"miniprogram-swipe.md\":\"ce5ea7a7\",\"service-worker-push-message.md\":\"60a616d7\",\"vue3-reactive.md\":\"569cfa4e\",\"公众号开发采坑总结.md\":\"e2902141\",\"archives_index.md\":\"0d0423ed\",\"tags_index.md\":\"adaab507\"}")</script>
+    <script type="module" async src="/assets/app.d8cb571a.js"></script>
+  </body>
+</html>
