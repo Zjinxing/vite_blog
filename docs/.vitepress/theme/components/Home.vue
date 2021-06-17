@@ -17,13 +17,9 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useSiteData } from 'vitepress'
+import usePages from '../composables/usePages'
 
-const siteDate = useSiteData()
-const artList = computed(() =>
-  siteDate.value.themeConfig.pages.filter((item) => item.frontMatter.title)
-)
+const artList = usePages()
 </script>
 
 <style lang="stylus" scoped>

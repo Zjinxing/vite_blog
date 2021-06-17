@@ -4,6 +4,7 @@ const getConfig = async () => {
   let config = {
     lang: 'zh-CN',
     title: 'hello vitepress',
+    description: '这里是描述',
     themeConfig: {
       pages: await getPages(),
       nav: [
