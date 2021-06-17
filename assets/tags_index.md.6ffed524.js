@@ -1,0 +1,1 @@
+import{r as t,o as e,c as a,a as r}from"./app.e7cdcbdd.js";const d='{"title":"分类","description":"","frontmatter":{"title":"分类"},"relativePath":"tags/index.md","lastUpdated":1623917371485}',s={};s.render=function(d,s,n,o,i,c){const l=t("Tags");return e(),a("div",null,[r(l)])};export default s;export{d as __pageData};
