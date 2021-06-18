@@ -24,33 +24,35 @@ const artList = usePages()
 
 <style lang="stylus" scoped>
 .article-list
-  list-style: none;
-  width: 100%;
-  max-width: 650px;
-  margin: 0 auto;
-
+  list-style: none
+  width: 100%
+  max-width: 650px
+  margin: 0 auto
 .article
-  padding: 25px 10px 15px 10px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid var(--c-divider-light);
+  padding: 25px 10px 15px 10px
+  margin-bottom: 10px
+  border-bottom: 1px solid var(--c-divider-light)
   transition: all 0.2s
   &-describe
+    overflow: hidden
+    text-overflow: ellipsis
+    display: -webkit-box
+    -webkit-line-clamp: 2
+    -webkit-box-orient: vertical
     color: var(--c-text-light)
   &-header
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+    display: flex
+    justify-content: space-between
+    align-items: baseline
     margin-bottom: 10px
   &-date
     color: var(--c-text-lighter)
   &:hover
     transform: scale(1.03)
-    box-shadow: 5px 5px 10px #3eaf7c66;
-
+    box-shadow: 5px 5px 10px #3eaf7c66
 .article-list
   a
-    text-decoration: none;
-
+    text-decoration: none
 .article-title
-  margin: 0;
+  margin: 0
 </style>
