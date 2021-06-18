@@ -1,1 +1,0 @@
-import{r as t,o as e,c as a,b as r}from"./app.fe136852.js";const s='{"title":"分类","description":"","frontmatter":{"title":"分类"},"relativePath":"tags/index.md","lastUpdated":1624008325285}',n={};n.render=function(s,n,o,i,d,l){const p=t("Tags");return e(),a("div",null,[r(p)])};export default n;export{s as __pageData};
