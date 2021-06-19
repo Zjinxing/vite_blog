@@ -1,1 +1,0 @@
-import{r as t,o as e,c as r,b as a}from"./app.903ca772.js";const i='{"title":"归档","description":"","frontmatter":{"title":"归档","page":true},"relativePath":"archives/index.md","lastUpdated":1624010838949}',n={},s=a("p",null,"guide page",-1);n.render=function(i,n,o,p,d,l){const c=t("Archives");return e(),r("div",null,[s,a(c)])};export default n;export{i as __pageData};
