@@ -3,7 +3,7 @@
     <li v-for="art in artList" :key="art.frontMatter.title" class="article">
       <a :href="art.regularPath">
         <div class="article-header">
-          <h3 class="article-title">
+          <h3 class="article-title ellipsis">
             {{ art.frontMatter.title }}
           </h3>
           <span class="article-date">{{ art.frontMatter.date }}</span>
@@ -45,8 +45,12 @@ const artList = usePages()
     justify-content: space-between
     align-items: baseline
     margin-bottom: 10px
+  &-title
+    flex: 1
   &-date
+    width: 82px
     color: var(--c-text-lighter)
+    margin-left: 12px
   &:hover
     transform: scale(1.03)
     box-shadow: 5px 5px 10px #3eaf7c66
