@@ -47,5 +47,5 @@ const archivesData = computed(() => {
         flex: 1
       span:nth-of-type(2)
         color: var(--c-text-lighter)
-        width: 42px
+        width: 50px
 </style>

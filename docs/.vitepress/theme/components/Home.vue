@@ -48,7 +48,7 @@ const artList = usePages()
   &-title
     flex: 1
   &-date
-    width: 82px
+    width: 90px
     color: var(--c-text-lighter)
     margin-left: 12px
   &:hover
