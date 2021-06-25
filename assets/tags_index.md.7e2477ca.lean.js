@@ -1,1 +1,0 @@
-import{r as t,o as e,c as a,b as r}from"./app.2522851a.js";const s='{"title":"分类","description":"","frontmatter":{"page":true,"title":"分类","date":"1970-01-01"},"relativePath":"tags/index.md","lastUpdated":1624320672988}',n={};n.render=function(s,n,o,d,i,p){const l=t("Tags");return e(),a("div",null,[r(l)])};export default n;export{s as __pageData};

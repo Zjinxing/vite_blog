@@ -1,1 +1,0 @@
-import{o as e,c as t}from"./app.2522851a.js";const r='{"title":"Home","description":"","frontmatter":{"page":true,"home":true,"date":"2021-01-03","title":"首页","describe":"首页"},"relativePath":"index.md","lastUpdated":1624320672988}',a={};a.render=function(r,a,o,d,i,n){return e(),t("div")};export default a;export{r as __pageData};
