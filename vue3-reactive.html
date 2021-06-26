@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>50+行代码模拟实现 vue3 reactive 响应式 | hello vitepress</title>
     <meta name="description" content="这里是描述">
-    <link rel="stylesheet" href="/assets/style.bc4e2b63.css">
-    <link rel="modulepreload" href="/assets/Home.2dc5f948.js">
-    <link rel="modulepreload" href="/assets/app.f13c1df7.js">
-    <link rel="modulepreload" href="/assets/vue3-reactive.md.c00e45b6.lean.js">
-    <link rel="modulepreload" href="/assets/app.f13c1df7.js">
+    <link rel="stylesheet" href="/assets/style.591c1fe5.css">
+    <link rel="modulepreload" href="/assets/Home.5cad2331.js">
+    <link rel="modulepreload" href="/assets/app.55d966ac.js">
+    <link rel="modulepreload" href="/assets/vue3-reactive.md.e1303e04.lean.js">
+    <link rel="modulepreload" href="/assets/app.55d966ac.js">
     <meta name="twitter:title" content="50+行代码模拟实现 vue3 reactive 响应式 | hello vitepress">
     <meta property="og:title" content="50+行代码模拟实现 vue3 reactive 响应式 | hello vitepress">
   </head>
@@ -75,7 +75,7 @@
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre></div><p>以上代码执行结果如下：</p><p><img src="https://cdn.jsdelivr.net/gh/Zjinxing/image-galary@master/blog/image-20210606163733103.png" alt="image-20210606163733103"></p><p>我们依次改变 <code>o.a,o.b,o.c</code> 的值看看会发生什么：</p><p><img src="https://cdn.jsdelivr.net/gh/Zjinxing/image-galary@master/blog/image-20210606164221733.png" alt="image-20210606164221733"></p><p>我们看到，在改变 o.a 和 o.b 的值得时候，执行了 effect 函数，而在改变 o.c 的时候并没有执行，这是因为在 effect 的副作用函数中读取了 o.a 和 o.b 的值，而没有读取 o.c 的值，只有触发了 get 才会进行依赖收集，从而在值改变的时候执行相应的副作用函数。而在vue中也有同样的 effect 函数，在 <code>packages/runtime-core/src/renderer.ts</code> 中有一个 <code>setupRenderEffect</code> 函数，在这里调用了 effect 函数，因此当经过 reactive 包装过的对象有值改变的时候，就会触发组件的重新渲染。</p><div class="language-js"><pre><code><span class="token function">effect</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">componentEffect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre></div><p>以上只是模仿 vue 实现了一下响应式，如果你想了解 vue3 的响应式原理而看源码又觉得吃力，可以先看看这个简化版的，了解一下大致流程在看源码，可能会有点帮助。</p><p>实际上 vue 的 reactive 要比这复杂很多，比如有 effectStack 副作用函数执行栈用来保存不同函数执行时的 activeEffect，因为在实际开发中必然会出现组件嵌套的情况，因此也就会出现 effect(fn), fn 中有调用 effect 的情况，这样可以保证不同组件的 componentEffect 不会乱套；还有用于判断是否该进行依赖收集的变量 shouldTrack，以及 schedule 调度器等等。简单来说就是组件渲染时访问数据，进行依赖收集，当相关值改变时，派发通知，执行相应的副作用渲染函数，进而重新渲染相关组件。更详细的分析已经有很多大佬写过了，在这儿就不啰嗦了(主要是因为懒)。</p></div></div><footer class="page-footer" data-v-d36a7fda data-v-5a019cc9><div class="edit" data-v-5a019cc9><div class="edit-link" data-v-5a019cc9 data-v-3ae295f1><!----></div></div><div class="updated" data-v-5a019cc9><!----></div></footer><!----><!--[--><!--]--></div></main></div><!----><!--]--></div>
-    <script>__VP_HASH_MAP__ = JSON.parse("{\"intersectionobserver-infinitscroll.md\":\"667814aa\",\"bubblesort.md\":\"437991e9\",\"chat-input.md\":\"168361ef\",\"electron-rxdb.md\":\"fd35c1dc\",\"elementui-el-table-sort.md\":\"25df5aab\",\"index.md\":\"402b61d1\",\"javascript-extends.md\":\"828ff12e\",\"miniprogram-swipe.md\":\"d4f51b2f\",\"service-worker-push-message.md\":\"5dbf7f3b\",\"vitepress-blog.md\":\"ac6602df\",\"vue3-reactive.md\":\"c00e45b6\",\"公众号开发采坑总结.md\":\"8046f56a\",\"archives_index.md\":\"83c0bfe7\",\"tags_index.md\":\"603f98c3\"}")</script>
-    <script type="module" async src="/assets/app.f13c1df7.js"></script>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"intersectionobserver-infinitscroll.md\":\"4f22795b\",\"bubblesort.md\":\"757d39c7\",\"chat-input.md\":\"ea23b71f\",\"electron-rxdb.md\":\"dfb16b38\",\"elementui-el-table-sort.md\":\"37141330\",\"index.md\":\"8ae254b4\",\"javascript-extends.md\":\"34558f66\",\"miniprogram-swipe.md\":\"209da8ae\",\"service-worker-push-message.md\":\"f2b83862\",\"vitepress-blog.md\":\"b24568f7\",\"vue3-reactive.md\":\"e1303e04\",\"公众号开发采坑总结.md\":\"1c6f76aa\",\"archives_index.md\":\"fe962dca\",\"tags_index.md\":\"053a5e2c\"}")</script>
+    <script type="module" async src="/assets/app.55d966ac.js"></script>
   </body>
 </html>
