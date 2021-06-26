@@ -1,3 +1,11 @@
+---
+title: 基于 vitepress 搭建的极简博客
+date: 2021-06-26
+tags:
+  - vue
+describe: 基于 vitepress 搭建一个简单的个人博客站点
+---
+
 ## 基于 vitepress 搭建的极简博客
 
 *未完*
