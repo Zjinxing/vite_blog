@@ -18,7 +18,6 @@ import { toRaw, computed } from 'vue'
 import usePages from '../composables/usePages'
 
 const pages = usePages()
-console.log(toRaw(pages.value))
 const archivesData = computed(() => {
   const result = new Map()
   const rawPageData = toRaw(pages.value)

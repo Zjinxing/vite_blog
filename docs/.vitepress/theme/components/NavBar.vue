@@ -7,6 +7,4 @@ import { computed } from 'vue'
 import { useSiteData } from "vitepress";
 const siteData = useSiteData()
 
-console.log({ siteData })
-
 </script>
