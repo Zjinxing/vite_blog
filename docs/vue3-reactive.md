@@ -4,7 +4,7 @@ date: 2021-06-06 20:43
 tags:
   - vue
   - JavaScript
-describe: vue3 已经出来很长时间了，相信大家都知道它是使用 `Proxy` 来实现的响应式，相关的源码在 `packages/reactivity` 目录下。作为一个技术栈以vue为主的开发者，了解相关源码还是有必要的。
+describe: vue3 已经出来很长时间了，相信大家都知道它是使用 Proxy 来实现的响应式，相关的源码在 packages/reactivity 目录下。作为一个技术栈以vue为主的开发者，了解相关源码还是有必要的。
 ---
 
 ## 50+行代码模拟实现 vue3 reactive 响应式
