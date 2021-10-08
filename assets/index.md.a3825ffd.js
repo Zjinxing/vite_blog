@@ -1,0 +1,1 @@
+import{r as e,o as t,c as r,b as a}from"./app.d2162012.js";const o='{"title":"Home","description":"","frontmatter":{"page":true,"home":true,"date":"2021-01-03","title":"首页","describe":"首页"},"relativePath":"index.md","lastUpdated":1633703210765}',d={};d.render=function(o,d,s,i,n,l){const m=e("Home");return t(),r("div",null,[a(m)])};export{o as __pageData,d as default};

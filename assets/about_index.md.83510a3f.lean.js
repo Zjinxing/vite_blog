@@ -1,0 +1,1 @@
+import{o as t,c as e,d as a}from"./app.d2162012.js";const r='{"title":"关于","description":"","frontmatter":{"page":true,"title":"关于","date":"1970-01-01"},"relativePath":"about/index.md","lastUpdated":1633703210761}',d={},n=[a("p",null,"先搞个空白页",-1)];d.render=function(a,r,d,i,l,o){return t(),e("div",null,n)};export{r as __pageData,d as default};
