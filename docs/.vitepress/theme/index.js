@@ -1,7 +1,7 @@
 import DefaultTheme from 'vitepress/theme'
 import Layout from './Layout.vue'
 import Tags from './components/Tags.vue'
-import Home from './components/Home.vue'
+import Home from './components/Home/index.jsx'
 import Archives from './components/Archives.vue'
 import './style/index.styl'
 

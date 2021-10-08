@@ -1,3 +1,4 @@
+const vueJsx = require('@vitejs/plugin-vue-jsx')
 const getPages = require('./utils/pages')
 
 const getConfig = async () => {
@@ -11,6 +12,7 @@ const getConfig = async () => {
         { text: '首页', link: '/' },
         { text: '归档', link: '/archives/' },
         { text: '分类', link: '/tags/' },
+        { text: '关于', link: '/about/' },
       ],
     },
   }

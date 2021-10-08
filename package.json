@@ -9,8 +9,9 @@
     "serve": "vitepress serve docs"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue-jsx": "^1.1.7",
     "stylus": "^0.54.8",
-    "vitepress": "^0.14.1"
+    "vitepress": "^0.16.1"
   },
   "dependencies": {
     "globby": "^11.0.3",
