@@ -48,7 +48,7 @@ touch ~/.gitconfig-work ~/.gitconfig-personal
 git config --show-origin --get user.name
 ```
 
-![image-20211008215553896](https://cdn.jsdelivr.net/gh/Zjinxing/image-galary@master/blog/image-20211008215553896.png)
+![image-20211008215553896](https://cdn.jsdelivr.net/gh/Zjinxing/image-galary@master/blog/image-20211008215553896-1.png)
 
 可以看到我们的配置是来自 `.gitconfig-work`  文件的，说明配置已经生效了，以后工作相关的项目就放到 work 目录下，个人的项目放到 personal 目录下，就不用对每个仓库进行单独配置了，这是不是就方便多了。
 
