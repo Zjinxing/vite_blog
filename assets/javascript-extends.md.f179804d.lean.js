@@ -1,1 +1,0 @@
-import{o as n,c as s,a}from"./app.d2162012.js";const t='{"title":"JS的继承","description":"","frontmatter":{"title":"JS的继承","date":"2018-08-04","tags":["JavaScript"]},"relativePath":"javascript-extends.md","lastUpdated":1633703210765}',p={},o=[a('',31)];p.render=function(a,t,p,c,e,u){return n(),s("div",null,o)};export{t as __pageData,p as default};
