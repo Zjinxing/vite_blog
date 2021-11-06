@@ -13,8 +13,8 @@ jobs:
         persist-credentials: false
     - name: setup node
       uses: actions/setup-node@v2
-        with:
-          node-version: '16'
+      with:
+        node-version: '16'
     - name: setup yarn
       run: npm i -g yarn
     - name: yarn install
