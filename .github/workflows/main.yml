@@ -21,6 +21,10 @@ jobs:
       run: yarn install
     - name: build
       run: yarn build
+    - name: config git
+      run: |
+        git config --global user.email ${{ secrets.EMAIL }}
+        git config --global user.name ${{ secrets.NAME }}
     - name: deploy
       run: |
         cd docs/.vitepress/dist
